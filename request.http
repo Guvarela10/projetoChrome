@@ -1,0 +1,111 @@
+#  -------------------------------------------------------- ROTAS ALUNOS -------------------------------------------------------------
+// ADICIONAR ALUNO
+POST http://localhost:3000/alunos
+Content-Type: application/json
+
+{
+    "name": "Gustavo",
+    "matricula": "111241062224"
+}
+
+###
+// BUSCAR TODOS OS ALUNOS
+GET http://localhost:3000/alunos
+
+###
+// BUSCAR ALUNO POR STATUS
+# GET http://localhost:3000/alunos/status/com-emprestimo
+
+###
+
+// BUSCAR ALUNO POR ID
+GET http://localhost:3000/alunos/1
+
+###
+// ATUALIZAR ALUNO POR ID
+PUT http://localhost:3000/alunos/3
+Content-Type: application/json
+
+{
+    "name": "Gustavo",
+    "matricula": "241064",
+    "status": "Sem emprestimo"
+}
+
+###
+// APAGAR ALUNO POR ID
+DELETE http://localhost:3000/alunos/delete/1
+
+###
+
+
+
+#    -------------------------------------------------------- ROTAS CHROMES -----------------------------------------------------------
+// ADICIONAR CHROMEBOOK
+POST http://localhost:3000/chromes
+Content-Type: application/json
+
+{
+    "serialNumber": "90891398189",
+    "status": "Livre"
+}
+
+###
+// BUSCAR TODOS OS CHROMEBOOKS
+GET http://localhost:3000/chromes
+
+###
+// BUSCAR CHROMES POR STATUS
+GET http://localhost:3000/chromes/status/Livre
+
+###
+// BUSCAR CHROMEBOOK POR ID
+GET http://localhost:3000/chromes/2
+
+###
+// ATUALIZAR CHROMEBOOK POR ID
+PUT http://localhost:3000/chromes/1
+Content-Type: application/json
+
+{
+    "serialNumber": "2010",
+    "status": "Ocupado"
+}
+
+###
+// DELETAR CHROMEBOOK POR ID
+DELETE http://localhost:3000/chromes/delete/1
+###
+
+
+
+#    ---------------------------------------------------------ROTAS EMPRESTIMOS--------------------------------------------------------
+// CRIAR UM EMPRESTIMO
+POST http://localhost:3000/chromes/1/emprestimos
+Content-Type: application/json 
+
+{
+    "status": "ativo",
+    "alunoId": 1
+}
+
+###
+// PEGAR EMPRESTIMOS POR STATUS
+GET http://localhost:3000/emprestimos/status/ativo
+
+###
+// PEGAR EMPRESTIMOS POR ID DO ALUNO
+GET http://localhost:3000/emprestimos/1
+
+###
+//ATUALIZAR EMPRESTIMOS POR ID DO EMPRESTIMO
+PUT http://localhost:3000/emprestimos/1
+Content-Type: application/json 
+
+{
+    "status": "encerrado"
+}
+
+###
+// DELETAR EMPRESTIMOS POR ID DO ALUNO
+DELETE http://localhost:3000/emprestimos/delete/1
