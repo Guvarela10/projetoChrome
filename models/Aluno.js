@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize'
 
-import database from '../db.js'
+import database from '../db/database.js'
 
 const Aluno = database.define('alunos', {
     name: {
@@ -8,7 +8,7 @@ const Aluno = database.define('alunos', {
         allowNull: false
     },
     matricula: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
     }
 })
