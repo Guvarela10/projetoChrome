@@ -59,7 +59,7 @@ async function getChromeById(req, res) {
 // DEPOIS PASSAMOS PELA VALIDADE, E POR ULTIMO, O SAVE PARA SALVARMOS A ALTERAÇÃO NO BANCO
 async function updateChromeByPk(req, res) {
     const { chromeId } = req.params
-    const { serialNumber, status } = req.body
+    const { serialNumber } = req.body
 
     const chrome = await Chrome.findByPk(chromeId)
 
@@ -68,7 +68,6 @@ async function updateChromeByPk(req, res) {
     }
 
     if (serialNumber) chrome.serialNumber = serialNumber
-    if (status) chrome.status = status
 
     try {
         await chrome.validate()

@@ -4,7 +4,7 @@ import database from '../db/database.js'
 
 const Chrome = database.define('chromes', {
     serialNumber: {
-        type: Sequelize.INTEGER,
+        type: Sequelize.STRING,
         allowNull: false
     }
 })
