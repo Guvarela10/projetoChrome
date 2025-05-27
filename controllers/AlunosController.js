@@ -1,5 +1,6 @@
 // IMPORTANDO A MODEL DE ALUNOS PARA ACESSARMOS O BANCO
 import Aluno from '../models/Aluno.js'
+import Emprestimo from '../models/Emprestimo.js'
 
 // FUNÇÃO PARA CRIAR ALUNOS, PEGA O QUE A GENTE COLOCAR NO BODY DA REQUISIÇÃO E USA O .CREATE() PARA CRIAR
 async function createAluno(req, res) {
@@ -88,13 +89,18 @@ async function updateAlunoById(req, res) {
 // AQUI ESTA APAGANDO O ALUNO POR ID
 async function deleteAlunoById(req, res) {
     const { alunoId } = req.params
+    const emprestimo = await Emprestimo.destroy({
+        where: {
+            alunoId: alunoId
+        }
+    })
     const aluno = await Aluno.destroy({
         where: {
             id: alunoId
         }
     })
 
-    if (aluno) {
+    if (aluno || emprestimo) {
         res.status(201).json('Aluno excluido com sucesso!')
     } else {
         res.status(500).json({ message: 'Não foi possível excluir o aluno!' })

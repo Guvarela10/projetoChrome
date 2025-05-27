@@ -29,4 +29,5 @@ router.get('/emprestimos/:alunoId', EmprestimosController.getEmprestimoByAlunoId
 router.put('/emprestimos/:emprestimoId', EmprestimosController.updateEmprestimoById)
 router.delete('/emprestimos/delete/:alunoId', EmprestimosController.deleteEmprestimoByAlunoId)
 
+
 export default router

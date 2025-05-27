@@ -16,6 +16,7 @@ async function createChrome(req, res) {
 // FUNÇÃO PARA PEGAR TODOS OS CHROMES DO BANCO, SOMENTE USANDO UM .FINDALL() QUE TRÁS PARA A GENTE UM ARRAY
 async function getAllChromes(_req, res) {
     const chromes = await Chrome.findAll()
+    // const emprestimo = 
 
     if (chromes) {
         res.json(chromes.map(chrome => chrome.toJSON()))
