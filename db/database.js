@@ -2,7 +2,7 @@ import { Sequelize } from 'sequelize'
 import config from './config.js'
 
 // CRIANDO BANCO DE DADOS
-const database = new Sequelize(config.development)
+const database = new Sequelize(config[process.env.NODE_ENV || 'development'])
 
 // TRY CATCH PARA INICIAR O BANCO DE DADOS
 try {

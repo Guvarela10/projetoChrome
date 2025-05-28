@@ -4,7 +4,7 @@ POST http://localhost:3000/alunos
 Content-Type: application/json
 
 {
-    "name": "Gustavo",
+    "name": "LUAn",
     "matricula": "111241062224"
 }
 
@@ -106,4 +106,4 @@ Content-Type: application/json
 
 ###
 // DELETAR EMPRESTIMOS POR ID DO ALUNO
-DELETE http://localhost:3000/emprestimos/fode/1
+DELETE http://localhost:3000/emprestimos/delete/1
