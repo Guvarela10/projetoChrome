@@ -1,5 +1,6 @@
 // IMPORTANDO A MODEL DE CHROME PARA ACESSARMOS O BANCO
 import Chrome from '../models/Chrome.js'
+import Emprestimo from '../models/Emprestimo.js'
 
 // FUNÇÃO PARA CRIAR CHROME, PEGA O QUE A GENTE COLOCAR NO BODY DA REQUISIÇÃO E USA O .CREATE() PARA CRIAR
 async function createChrome(req, res) {
@@ -13,14 +14,26 @@ async function createChrome(req, res) {
     }
 }
 
-// FUNÇÃO PARA PEGAR TODOS OS CHROMES DO BANCO, SOMENTE USANDO UM .FINDALL() QUE TRÁS PARA A GENTE UM ARRAY
+// FUNÇÃO PARA PEGAR TODOS OS CHROMES DO BANCO, E VERIFICAR SE O CHROMEBOOK ESTÁ COM UM EMPRESTIMO, POR MEIO DO ISBORROWED SOMENTE USANDO UM .FINDALL() QUE TRÁS PARA A GENTE UM ARRAY
 async function getAllChromes(_req, res) {
-    const chromes = await Chrome.findAll()
-    // const emprestimo = 
+    try {
+        const chromes = await Chrome.findAll()
 
-    if (chromes) {
-        res.json(chromes.map(chrome => chrome.toJSON()))
-    } else {
+        const emprestimosAtivos = await Emprestimo.findAll({
+            where: { status: 'ativo' }
+        })
+
+        // Mapeia os chromes e adiciona isBorrowed = true se tiver empréstimo ativo para aquele chrome
+        const resultado = chromes.map(chrome => {
+            const emprestimoAtivo = emprestimosAtivos.some(e => e.chromeId === chrome.id)
+            return {
+                ...chrome.toJSON(),
+                isBorrowed: emprestimoAtivo
+            }
+        })
+
+        res.json(resultado)
+    } catch (error) {
         res.status(500).json({ message: 'Não foi possível buscar Chromebooks!' })
     }
 }
