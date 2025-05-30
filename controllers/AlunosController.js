@@ -25,23 +25,6 @@ async function getAllAlunos(_req, res) {
     }
 }
 
-// AQUI ESTA TRAZENDO TODOS OS ALUNOS FILTRANDO POR STATUS
-// async function getAllAlunosWhereStatus(req, res) {
-//     const { status } = req.params
-
-//     const alunos = await Aluno.findAll({
-//         where: {
-//             status: status
-//         }
-//     })
-
-//     if (alunos) {
-//         res.json(alunos.map(aluno => aluno.toJSON()))
-//     } else {
-//         res.status(500).json({ message: 'Não foi possível buscar alunos!' })
-//     }
-// }
-
 // FUNÇÃO PARA PEGAR SOMENTE UM ALUNO, PASSANDO COMO PARÂMETRO O ID DO ALUNO, QUE A GENTE PEGA NA REQUISIÇÃO, USANDO O REQ.PARAMS
 async function getAlunoById(req, res) {
     const { alunoId } = req.params
@@ -101,7 +84,7 @@ async function deleteAlunoById(req, res) {
     })
 
     if (aluno || emprestimo) {
-        res.status(201).json('Aluno excluido com sucesso!')
+        res.status(200).json('Aluno excluido com sucesso!')
     } else {
         res.status(500).json({ message: 'Não foi possível excluir o aluno!' })
     }

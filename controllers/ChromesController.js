@@ -5,7 +5,7 @@ import Emprestimo from '../models/Emprestimo.js'
 // FUNÇÃO PARA CRIAR CHROME, PEGA O QUE A GENTE COLOCAR NO BODY DA REQUISIÇÃO E USA O .CREATE() PARA CRIAR
 async function createChrome(req, res) {
     const { serialNumber, status } = req.body
-    const chrome = await Chrome.create({ serialNumber, status })
+    const chrome = await Chrome.create({ serialNumber })
 
     if (chrome) {
         res.status(201).json(chrome.toJSON())
@@ -34,23 +34,6 @@ async function getAllChromes(_req, res) {
 
         res.json(resultado)
     } catch (error) {
-        res.status(500).json({ message: 'Não foi possível buscar Chromebooks!' })
-    }
-}
-
-// AQUI ESTA TRAZENDO TODOS OS CHROMES FILTRANDO POR STATUS
-async function getAllChromesWhereStatus(req, res) {
-    const { status } = req.params
-
-    const chromes = await Chrome.findAll({
-        where: {
-            status: status
-        }
-    })
-
-    if (chromes) {
-        res.json(chromes.map(chrome => chrome.toJSON()))
-    } else {
         res.status(500).json({ message: 'Não foi possível buscar Chromebooks!' })
     }
 }
@@ -105,9 +88,14 @@ async function deleteChromeById(req, res) {
             id: chromeId
         }
     })
+    const emprestimo = await Emprestimo.destroy({
+        where: {
+            chromeId
+        }
+    })
 
-    if (chrome) {
-        res.status(201).json('Chromebook excluido com sucesso!')
+    if (chrome || emprestimo) {
+        res.status(200).json('Chromebook excluido com sucesso!')
     } else {
         res.status(500).json({ message: 'Não foi possível excluir o Chromebook!' })
     }

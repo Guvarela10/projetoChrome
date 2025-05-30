@@ -22,6 +22,10 @@ async function getEmprestimoByAlunoId(req, res) {
     const { alunoId } = req.params
 
     const aluno = await Aluno.findByPk(alunoId, { include: 'emprestimos' })
+
+    if (!aluno) {
+        return res.status(404).json({ message: 'Aluno não encontrado' })
+    }
     const emprestimos = aluno.emprestimos
 
     if (emprestimos) {
@@ -44,7 +48,7 @@ async function getAllEmprestimosWhereStatus(req, res) {
     if (emprestimos) {
         res.json(emprestimos.map(emprestimo => emprestimo.toJSON()))
     } else {
-        res.status(500).json({ message: 'Não foi possível buscar alunos!' })
+        res.status(500).json({ message: 'Não foi possível buscar os emprestimos!' })
     }
 }
 

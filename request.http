@@ -11,11 +11,6 @@ Content-Type: application/json
 ###
 // BUSCAR TODOS OS ALUNOS
 GET http://localhost:3000/alunos
-
-###
-// BUSCAR ALUNO POR STATUS
-# GET http://localhost:3000/alunos/status/com-emprestimo
-
 ###
 
 // BUSCAR ALUNO POR ID
@@ -52,10 +47,6 @@ Content-Type: application/json
 ###
 // BUSCAR TODOS OS CHROMEBOOKS
 GET http://localhost:3000/chromes
-
-###
-// BUSCAR CHROMES POR STATUS
-GET http://localhost:3000/chromes/status/Livre
 
 ###
 // BUSCAR CHROMEBOOK POR ID
