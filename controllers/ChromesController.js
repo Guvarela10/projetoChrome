@@ -102,4 +102,4 @@ async function deleteChromeById(req, res) {
 }
 
 // EXPORTANDO AS FUNÇÕES PARA O ROUTES PODER TRABALHAR
-export default { createChrome, getAllChromes, getChromeById, updateChromeByPk, getAllChromesWhereStatus, deleteChromeById }
+export default { createChrome, getAllChromes, getChromeById, updateChromeByPk, deleteChromeById }
