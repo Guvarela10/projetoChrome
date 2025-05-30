@@ -83,16 +83,19 @@ async function updateChromeByPk(req, res) {
 // AQUI ESTA APAGANDO O CHROME POR ID
 async function deleteChromeById(req, res) {
     const { chromeId } = req.params
-    const chrome = await Chrome.destroy({
-        where: {
-            id: chromeId
-        }
-    })
+
     const emprestimo = await Emprestimo.destroy({
         where: {
             id: chromeId
         }
     })
+
+    const chrome = await Chrome.destroy({
+        where: {
+            id: chromeId
+        }
+    })
+
 
     if (chrome || emprestimo) {
         res.status(200).json('Chromebook excluido com sucesso!')
