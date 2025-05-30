@@ -4,7 +4,7 @@ POST http://localhost:3000/alunos
 Content-Type: application/json
 
 {
-    "name": "LUAn",
+    "name": "Gustavo",
     "matricula": "111241062224"
 }
 
