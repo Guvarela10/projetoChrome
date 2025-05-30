@@ -4,7 +4,7 @@ import Emprestimo from '../models/Emprestimo.js'
 
 // FUNÇÃO PARA CRIAR CHROME, PEGA O QUE A GENTE COLOCAR NO BODY DA REQUISIÇÃO E USA O .CREATE() PARA CRIAR
 async function createChrome(req, res) {
-    const { serialNumber, status } = req.body
+    const { serialNumber } = req.body
     const chrome = await Chrome.create({ serialNumber })
 
     if (chrome) {
