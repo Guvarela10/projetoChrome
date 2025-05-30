@@ -9,7 +9,7 @@ const Aluno = database.define('alunos', {
     },
     matricula: {
         type: Sequelize.STRING,
-        allowNull: false
+        allowNull: false    
     }
 })
 
