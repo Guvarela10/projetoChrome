@@ -90,7 +90,7 @@ async function deleteChromeById(req, res) {
     })
     const emprestimo = await Emprestimo.destroy({
         where: {
-            chromeId
+            id: chromeId
         }
     })
 

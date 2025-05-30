@@ -25,7 +25,7 @@ router.post('/chromes/:chromeId/emprestimos', EmprestimosController.createEmpres
 router.get('/emprestimos/status/:status', EmprestimosController.getAllEmprestimosWhereStatus)
 router.get('/emprestimos/:alunoId', EmprestimosController.getEmprestimoByAlunoId)
 router.put('/emprestimos/:emprestimoId', EmprestimosController.updateEmprestimoById)
-router.delete('/emprestimos/delete/:alunoId', EmprestimosController.deleteEmprestimoByAlunoId)
+router.delete('/emprestimos/delete/:emprestimoId', EmprestimosController.deleteEmprestimoByAlunoId)
 
 
 export default router

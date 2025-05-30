@@ -82,13 +82,9 @@ async function updateEmprestimoById(req, res) {
 
 // AQUI ESTA APAGANDO O EMPRESTIMO PELO ID DO USUARIO
 async function deleteEmprestimoByAlunoId(req, res) {
-    const { alunoId } = req.params
 
-    const emprestimo = await Emprestimo.destroy({
-        where: {
-            alunoId
-        }
-    })
+    const { emprestimoId } = req.params
+    const emprestimo = await Emprestimo.destroy({ where: { id: emprestimoId } })
 
     if (emprestimo) {
         res.status(200).json('Emprestimo exluido com sucesso')
