@@ -98,3 +98,19 @@ Content-Type: application/json
 ###
 // DELETAR EMPRESTIMOS POR ID DO ALUNO
 DELETE http://localhost:3000/emprestimos/delete/1
+
+###
+
+
+
+#    ---------------------------------------------------------ROTAS EMPRESTIMOS--------------------------------------------------------
+
+POST http://localhost:3000/users/login 
+Content-Type: application/json
+
+{
+    "email": "gustavo_20@mail.com",
+    "password": "225566"
+}
+
+###

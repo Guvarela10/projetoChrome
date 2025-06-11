@@ -3,6 +3,7 @@ import { Router } from 'express'
 import AlunosController from './controllers/AlunosController.js'
 import ChromesController from './controllers/ChromesController.js'
 import EmprestimosController from './controllers/EmprestimosController.js'
+import UserController from './controllers/UserController.js'
 
 const router = Router()
 
@@ -27,5 +28,7 @@ router.get('/emprestimos/:alunoId', EmprestimosController.getEmprestimoByAlunoId
 router.put('/emprestimos/:emprestimoId', EmprestimosController.updateEmprestimoById)
 router.delete('/emprestimos/delete/:emprestimoId', EmprestimosController.deleteEmprestimoByAlunoId)
 
+//ROTAS PARA TABELA USER
+router.post('/users/login', UserController.login)
 
 export default router
